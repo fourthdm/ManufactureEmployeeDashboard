@@ -1,1 +1,22 @@
-<p>employeedetails works!</p>
+<div class="container"> <br><br>
+    <div class="card">
+        <div class="card-body">
+            <h3>Employee Details</h3>
+            <hr>
+
+            <div class="text-end">
+                <p><b>Added Date:</b> {{ employeeData?.E_AddedDate | date }} <br> {{employeeData?.E_AddedDate
+                    |date:'h:mm a'
+                    }}</p>
+            </div>
+            <p><b>Name:</b> {{ employeeData?.E_Name }}</p>
+            <p><b>Employee ID:</b> {{ employeeData?.E_id }}</p>
+            <p><b>Email:</b> {{ employeeData?.E_Email }}</p>
+            <p><b>Phone:</b> {{ employeeData?.E_PhoneNo }}</p>
+            <p><b>Address:</b> {{ employeeData?.E_Address }}</p>
+            <p><b>Role:</b> {{ employeeData?.E_Role }}</p>
+            <p><b>Status:</b> {{ employeeData?.E_Status }}</p>
+
+        </div>
+    </div>
+</div>

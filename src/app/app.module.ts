@@ -21,6 +21,7 @@ import { ViewjobdetailsComponent } from './pages/viewjobdetails/viewjobdetails.c
 import { SafeurlPipe } from './safeurl.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialComponent } from './pages/material/material.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     QcdashboardComponent,
     TeamleadComponent,
     ViewjobdetailsComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,59 @@
-<p>inventory works!</p>
+<br><br><br>
+<div class="container-fluid">
+    <div class="text-center">
+        <h3>All Designed Jobs</h3>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Job Name</th>
+                    <th scope="col">Designer Name </th>
+                    <th scope="col">DesignedFile</th>
+                    <th scope="col">ModelFile</th>
+                    <th scope="col">Added Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of AllDesignedJOBs, let i=index">
+                    <th title="View Information" class="info">
+                        {{a.Job_Id }}</th>
+                    <td title="View Information" class="info">
+                        {{a.JobName}}</td>
+                    <td>{{a.DesignBy}}</td>
+                    <td>DWG File <button (click)="downloadFromUrl(a.DsignFile)" class="btn btn-primary"
+                            title="Download a Design File">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <iframe [src]="dwgViewerUrl | safeurl" width="100%" height="300px" frameborder="0">
+                        </iframe>
+                    </td>
+                    <td>3D ModelView File
+                        <button (click)="downloadFromUrl(a.ModelFile)" class="btn btn-success"
+                            title="Download a 3D Model File">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <iframe [src]="ModelUrl | safeurl" width="100%" height="300px" frameborder="0">
+                        </iframe>
+                    </td>
+                    <td>{{a.Added_Date | date:'short'}}</td>
+                    <!-- <td> <button type="button" class="btn btn-info" (click)="editAssignjobs(a.Job_Id)"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </td>
+
+                    <td><button class="btn btn-danger" type="button" (click)="Delete(a['Job_Id'])"
+                            class="btn btn-danger" title="Delete a Job"><i class="fa-regular fa-trash-can"></i></button>
+                    </td> -->
+                </tr>
+                <br>
+            </tbody>
+        </table>
+    </div>
+
+</div>

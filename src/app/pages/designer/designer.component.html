@@ -1,1 +1,183 @@
-<p>designer works!</p>
+<br><br><br>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3">
+          
+            <div class="card">
+                <div class="card-header">
+                   <h3> Designed Job</h3>
+                </div>
+                <div class="card-body" style="background-color: #332642;">
+                    <form [formGroup]="AddFormDesignJobs" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Job Name :</label>
+                                <input formControlName="JobName" class="form-control" placeholder="Job Name">
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <label>Design By :</label>
+                                <input formControlName="DesignBy" class="form-control" placeholder="DesignBy">
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <label>Design File :</label>
+                                <input type="file" (change)="onFileSelected($event)" class="form-control" >
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <label>Model File :</label>
+                                <input type="file" (change)="onFileSelected($event)" class="form-control" >
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-outline-light">Add Job</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+            <!-- <h3>My Assigned Jobs</h3><br> -->
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Question</th>
+                        <th>Question File</th>
+                        <th>Added Date</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let job of Designerjobs">
+                        <td>{{ job.AJob_id }}</td>
+                        <td>{{ job.Job_Name }}</td>
+                        <td>{{ job.Question }}</td>
+
+                        <td>
+                            <a [href]="job.QuestionFile" target="_blank">Download File</a>
+                        </td>
+
+                        <td>{{ job.Added_Date | date:'short' }}</td>
+
+                        <!-- <td>
+                <button class="btn btn-success" (click)="openDesignForm(job)">
+                  Add Design
+                </button>
+                </td> -->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div><br>
+    </div>
+    <br><br>
+
+    <div class="row">
+        <div class="text-center">
+            <h3 style="color: white;">All Designed Job</h3> <br>
+        </div> <br>
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">Designer Name </th>
+                        <th scope="col">DesignedFile</th>
+                        <th scope="col">ModelFile</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Edit</th>
+                        <!-- <th scope="col">Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let a of DEJobs, let i=index">
+                        <td title="View Information" class="info">
+                            {{a.Job_Id }}</td>
+                        <td title="View Information" class="info">
+                            {{a.JobName}}</td>
+                        <td>{{a.DesignBy}}</td>
+                        <td>DWG File <button (click)="downloadFromUrl(a.DsignFile)" class="btn btn-primary"
+                                title="Download a Design File">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <iframe [src]="dwgViewerUrl | safeurl" width="100%" height="300px" frameborder="0">
+                            </iframe>
+                        </td>
+                        <td>3D ModelView File
+                            <button (click)="downloadFromUrl(a.ModelFile)" class="btn btn-success"
+                                title="Download a 3D Model File">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <iframe [src]="ModelUrl | safeurl" width="100%" height="300px" frameborder="0">
+                            </iframe>
+                        </td>
+                        <td>{{a.Added_Date | date:'short'}}</td>
+                        <td> <button type="button" class="btn btn-info" (click)="editAssignjobs(a.Job_Id)"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                        <!--   <td><button class="btn btn-danger" type="button" (click)="Delete(a['Job_Id'])"
+                                class="btn btn-danger" title="Delete a Job"><i
+                                    class="fa-regular fa-trash-can"></i></button>
+                        </td> -->
+                    </tr>
+                    <br>
+                </tbody>
+            </table>
+
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Design Job</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <br>
+                                <form [formGroup]="EditDesignJobs">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Job Name</label>
+                                            <input formControlName="JobName" class="form-control" />
+                                        </div>
+
+                                        <div class="col-md-6 mt-3">
+                                            <label>Designed File</label>
+                                            <input type="file" (change)="onFileChange($event,'DsignFile')"
+                                                class="form-control" />
+                                        </div>
+
+                                        <div class="col-md-6 mt-3">
+                                            <label>Model File</label>
+                                            <input type="file" (change)="onFileChange($event,'ModelFile')"
+                                                class="form-control" />
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button class="btn btn-success btn-lg mb-4" (click)="AssignJobUpdates()">Update
+                                        Designed Job</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

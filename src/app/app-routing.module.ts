@@ -12,9 +12,10 @@ import { DesignjobComponent } from './pages/designjob/designjob.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
 import { QcdashboardComponent } from './pages/qcdashboard/qcdashboard.component';
 import { TeamleadComponent } from './pages/teamlead/teamlead.component';
+import { MaterialComponent } from './pages/material/material.component';
 
 const routes: Routes = [
-    { path: ' ', redirectTo: 'login', pathMatch: "full" },
+  { path: ' ', redirectTo: 'login', pathMatch: "full" },
   { path: 'login', component: LoginComponent },
   {
     path: 'Home', component: HomeComponent, children: [
@@ -30,7 +31,7 @@ const routes: Routes = [
       { path: 'InventoryDashboard', component: InventoryComponent },
       { path: 'QCDashboard', component: QcdashboardComponent },
       { path: 'TeamleadDashboard', component: TeamleadComponent },
-      // { path: 'MaterialData', component: mater },
+      { path: 'MaterialData', component: MaterialComponent },
       // { path: 'MachineData', component: MachineComponent },
       { path: '**', redirectTo: 'dashboard' }
     ]
