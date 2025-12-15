@@ -1,0 +1,206 @@
+<div class="container-fluid"> <br><br><br>
+    <div class="row">
+        <div class="col-sm-3 ">
+            <p class="headline">Assign Job to Designer</p>
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="AssignjobForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Job Name :</label>
+                                <input formControlName="Job_Name" class="form-control" />
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <label>Question :</label>
+                                <input formControlName="Question" class="form-control" />
+                            </div>
+
+
+                            <div class="col-md-12 mt-3">
+                                <label>Question File :</label>
+                                <input type="file" (change)="onFileSelected($event)" class="form-control" /> <br>
+                            </div>
+
+                            <br> <br>
+                            <div class="col-md-12">
+                                <label>Designer Name :</label> <br>
+                                <select formControlName="DesignerName">
+                                    <option *ngFor="let emp of Designers" [value]="emp.E_Name">{{
+                                        emp.E_Name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Add Job</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="text-center">
+                <p class="headline"> Assigned Job for Designer</p>
+            </div>
+
+            <div class="rowws">
+                <div class="">
+                    <label for="DesignerName">Select Designer Name.<br>
+                        <select name="DesignerName" id="DesignerName" [(ngModel)]="DesignerName" class="form-select"
+                            placeholder="Select DesignerName" aria-label="Multiple select example">
+                            <option *ngFor="let d of Designers" [value]="d.E_Name">{{d.E_Name}}
+                            </option>
+                        </select>
+                    </label><button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                            class="fa-solid fa-magnifying-glass" (click)="DatabydesignerName()"></i></button>
+                </div>
+
+                <button (click)="AllAssignJobs()" class="btn btn-warning" style="color: white; margin-left: 5%;"
+                    title="Refresh Job">Refresh Data</button>
+            </div>
+            <br>
+                <div class="table-responsive">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th scope="col">Id</th>
+                            <th scope="col">Job Name</th>
+                            <th scope="col">AssignTo </th>
+                            <th scope="col">Question</th>
+                            <th scope="col">Question File</th>
+                            <th scope="col">Added Date</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of ASSGINJObs, let i=index">
+                            <th title="View Information" class="info">
+                                {{a.AJob_id }}</th>
+                            <td title="View Information" class="info">
+                                {{a.Job_Name}}</td>
+                            <td>{{a.DesignerName}}</td>
+                            <td>{{a.Question}}</td>
+                            <td><button (click)="downloadFromUrl(a.QuestionFile)" class="btn btn-primary"
+                                    title="Download a Question File">
+                                    <i class="fa-solid fa-download"></i>
+                                </button></td>
+                            <td>{{a.Added_Date | date}} {{a.Added_Date | date:'h:mm a'}}</td>
+                            <td> <button type="button" class="btn btn-info" (click)="editAssignjobs(a.AJob_id)"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </td>
+
+                            <td><button class="btn btn-danger" type="button" (click)="Delete(a['AJob_id'])"
+                                    class="btn btn-danger" title="Delete a Job"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                            </td>
+                        </tr>
+                        <br>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">AssignTo </th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Question File</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of ASSGINJObs, let i=index">
+                        <th title="View Information" class="info">
+                            {{a.AJob_id }}</th>
+                        <td title="View Information" class="info">
+                            {{a.Job_Name}}</td>
+                        <td>{{a.DesignerName}}</td>
+                        <td>{{a.Question}}</td>
+                        <td><button (click)="downloadFromUrl(a.QuestionFile)" class="btn btn-primary"
+                                title="Download a Question File">
+                                <i class="fa-solid fa-download"></i>
+                            </button></td>
+                        <td>{{a.Added_Date | date:'short'}}</td>
+                        <td> <button type="button" class="btn btn-info" (click)="editAssignjobs(a.AJob_id)"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Edit a Job">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+
+                        <td><button class="btn btn-danger" type="button" (click)="Delete(a['AJob_id'])"
+                                class="btn btn-danger" title="Delete a Job"><i
+                                    class="fa-regular fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <br>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Assign Job</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <br>
+                        <form [formGroup]="UpateformAssignjob">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Job Name</label>
+                                    <input formControlName="Job_Name" class="form-control" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Designer Name</label>
+                                    <select formControlName="DesignerName">
+                                        <option *ngFor="let emp of Designers" [value]="emp.E_Name">{{
+                                            emp.E_Name }}
+                                        </option>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6 mt-3">
+                                    <label>Question</label>
+                                    <input formControlName="Question" class="form-control" />
+                                </div>
+
+
+                                <div class="col-md-6 mt-3">
+                                    <label>Question File</label>
+                                    <input type="file" (change)="onFileChange($event,'QuestionFile')"
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <br>
+                            <button class="btn btn-success btn-lg mb-4" (click)="AssignJobUpdates()">Update
+                                Assign Jobs</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

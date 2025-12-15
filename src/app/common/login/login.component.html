@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="container">
+        <section class="vh-100">
+            <div class="container  h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <form [formGroup]="loginform" (submit)="login()">
+                                        <br>
+                                        <div class="text-center">
+                                            <p class="logins">LOGIN </p>
+                                        </div>
+                                        <br>
+
+                                        <div class="col-md-12">
+                                            <label for="E_Code"> Employee Code </label><br><br>
+                                            <input type="text"  formControlName="E_Code" value="" placeholder="Enter Employee Code"
+                                                required>
+                                            <div class="valid-feedback">
+                                                Your Name
+                                            </div>
+                                        </div><br>
+
+                                        <br>
+                                        <div class="text-center">
+                                            <button class="btn btn-outline-light btn-lg" type="submit"> Log in</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

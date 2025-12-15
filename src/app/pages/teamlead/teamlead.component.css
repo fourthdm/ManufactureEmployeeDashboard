@@ -1,0 +1,20 @@
+.container-fluid {
+    padding: 5%;
+}
+
+.headline {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+select {
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+}
+
+.rowws {
+    display: flex;
+}
