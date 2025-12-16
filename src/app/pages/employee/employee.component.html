@@ -1,1 +1,34 @@
-<p>employee works!</p>
+<div class="container">
+    <br><br>
+         <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Employee Name</th>
+                        <th>Job Name</th>
+                        <th>Design File</th>
+                        <th>Added Date</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let job of EmployeeJobs">
+                        <td [routerLink]="['/Home/JobInformation',job.Job_id]" title="View Job Details" class="redirect">{{ job.Job_id }}</td>
+                        <td>{{ job.E_Name }}</td>
+                        <td>{{ job.J_Name }}</td>
+                        <td>
+                            <a [href]="job.DesignFile" target="_blank" title="Download Design File"><i class="fa-solid fa-cloud-arrow-down fa-xl"></i></a>
+                        </td>
+
+                        <td>{{ job.Added_Date | date:'short' }}</td>
+
+                        <!-- <td>
+                <button class="btn btn-success" (click)="openDesignForm(job)">
+                  Add Design
+                </button>
+                </td> -->
+                    </tr>
+                </tbody>
+            </table>
+</div>

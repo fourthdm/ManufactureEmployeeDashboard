@@ -48,6 +48,16 @@ export class RestService {
     return this._http.get(this.Url + '/designerjobstodesigner', { headers });
   }
 
+  JobsForEmployee() {
+    this._state.checkToken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.get(this.Url + '/AlljobtableDatatoEmployee', { headers });
+  }
+
+  ALLJobsById(Job_id: number) {
+    return this._http.get(this.Url + '/jobtableAllDatabyJob_id/' + Job_id);
+  }
+
   //Assignjob ends
 
   AddDesignjob(formdata: FormData) {
@@ -89,7 +99,6 @@ export class RestService {
   }
 
   // Material Data
-
   AllMaterials() {
     return this._http.get(this.Url + '/ALLMaterial');
   }
@@ -130,6 +139,4 @@ export class RestService {
   }
 
   // Material API Ends
-
-
 }

@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'Employee', component: EmployeeComponent },
       { path: 'EmployeeInformation', component: EmployeedetailsComponent },
       { path: 'Job', component: JobsComponent },
-      { path: 'JobInformation/:J_id', component: ViewjobdetailsComponent },
+      { path: 'JobInformation/:Job_id', component: ViewjobdetailsComponent },
       { path: 'AssignJob', component: AssisgnjobComponent },
       { path: 'Designer', component: DesignerComponent },
       { path: 'DesignJob', component: DesignjobComponent },
