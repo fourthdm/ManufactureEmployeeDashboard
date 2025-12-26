@@ -69,7 +69,6 @@ export class DesignerComponent {
     });
   }
 
-
   AllDesignerjob() {
     this._rest.JobForDesigner().subscribe((data: any) => {
       this.Designerjobs = data.data;

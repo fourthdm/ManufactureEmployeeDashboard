@@ -4,3 +4,13 @@
     color: white !important;
     border-left: 2px solid white;
 }
+
+.sidebar {
+    width: 280px;
+    min-height: 100vh;
+    background-color: #483d53;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

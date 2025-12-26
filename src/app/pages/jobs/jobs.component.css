@@ -1,0 +1,43 @@
+label {
+    color: white;
+    font-size: medium;
+    /* font-weight: 700; */
+}
+
+.container-fluid {
+    padding: 5%;
+}
+
+input,
+select,
+textarea {
+    background-color: transparent !important;
+    color: white;
+}
+
+
+::placeholder {
+    color: white !important;
+}
+
+:placeholder-shown {
+    color: white !important;
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    color: white;
+    border-bottom: 1px solid #ddd;
+    background-color: #433558;
+}
+
+a{
+    color: white;
+}
+
+td{
+    color: white;
+}

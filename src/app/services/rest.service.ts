@@ -139,4 +139,26 @@ export class RestService {
   }
 
   // Material API Ends
+
+  //AddJob by employeee
+  AddJobbyEmployee(data: any) {
+    return this._http.post(this.Url + '/NewAddJobupdatematerial', data);
+  }
+
+  StartJob(Job_id: number) {
+    return this._http.post(this.Url + '/startJob',
+      { Job_id }, // 👈 MUST be object
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
+  // StartJob(Job_id: number) {
+  //   return this._http.post(this.Url + '/startJob' , Job_id);
+  // }
+
+  CompleteJob(Job_id: number) {
+    return this._http.post(this.Url + '/completeJob', Job_id);
+  }
+
+
 }

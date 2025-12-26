@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;min-height: 100vh;background-color: 
+<div class="d-flex flex-column flex-shrink-0 p-3" style="width: 250px;min-height: 100vh;background-color: 
 #483d53; color: white; position: fixed;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none">
         <svg class="bi me-2" width="40" height="32">
@@ -14,9 +14,8 @@
                 class="nav-link link-light"
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{ exact: true }"
-                [routerLink]="['/Home/Job']"
-            >
-                Jobs
+                [routerLink]="['/Home/Job']" >
+                 <i class="fa-solid fa-person-booth fa-xl"></i> Jobs
             </a>
         </li>
         <li>
@@ -25,7 +24,7 @@
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{ exact: true }"
                 [routerLink]="['/Home/MaterialData']"  >
-                Materials
+               <i class="fa-solid fa-bowling-ball fa-xl"></i> Materials
             </a>
         </li>
         <li>
@@ -34,9 +33,8 @@
                 class="nav-link link-light"
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{ exact: true }"
-                [routerLink]="['/Home/AssignJob']"
-            >
-                Assign Job
+                [routerLink]="['/Home/AssignJob']" >
+              <i class="fa-regular fa-id-card fa-xl"></i>  Assign Job
             </a>
         </li>
         <li>
@@ -45,14 +43,13 @@
                 class="nav-link link-light"
                 routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{ exact: true }"
-                [routerLink]="['/Home/Designer']"
-            >
-                Design Job
+                [routerLink]="['/Home/Designer']">
+                 <i class="fa-solid fa-chalkboard-user fa-xl"></i>  Design Job
             </a>
         </li>
     </ul>
     <hr>
     <div class="">
-        <strong (click)="Logout()">Log Out</strong>
+        <strong (click)="Logout()"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  Log Out</strong>
     </div>
 </div>
